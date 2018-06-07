@@ -1,0 +1,3 @@
+[submodule "priv/static/nipplejs"]
+	path = priv/static/nipplejs
+	url = http://github.com/yoannmoinet/nipplejs.git
