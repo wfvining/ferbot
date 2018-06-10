@@ -10,7 +10,7 @@ void dispatch(char*);
 int read_command(char *buf, size_t len)
 {
    char size;
-   if(read(0, &size, 2) != 1)
+   if(read(0, &size, 1) != 1)
    {
       return -1;
    }
@@ -41,6 +41,8 @@ void dispatch(char *command)
          return;
       }
       else {
+         printf("duty_left: %f\n", duty_left);
+         printf("duty_right: %f\n", duty_right);
          rc_motor_set(3, -duty_left);
          rc_motor_set(2, duty_right);
       }
@@ -61,7 +63,7 @@ int main(int argc, char **argv)
    if(rc_motor_init()) return -1;
    do
    {
-      if(read_command(command, 256) != 0)
+      if(read_command(command, 256) <= 0)
       {
          perror("read_command()");
          exit(-1);
