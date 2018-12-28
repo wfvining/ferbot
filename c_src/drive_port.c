@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <errno.h>
 
+#define LEFT  1
+#define RIGHT 2
+
 int read_command(char*,size_t);
 void dispatch(char*);
 
@@ -43,8 +46,8 @@ void dispatch(char *command)
       else {
          printf("duty_left: %f\n", duty_left);
          printf("duty_right: %f\n", duty_right);
-         rc_motor_set(3, -duty_left);
-         rc_motor_set(2, duty_right);
+         rc_motor_set(LEFT, -duty_left);
+         rc_motor_set(RIGHT, duty_right);
       }
    }
 
