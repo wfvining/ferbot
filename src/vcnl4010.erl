@@ -32,6 +32,8 @@ start(Bus) ->
     ok = i2c:write(Device, <<?INTCONTROL:8,16#08>>),
     {ok, Device}.
 
+stop(Device) ->
+    i2c:stop(Device).
 
 %% Translate a frequency in samples per second to the corresponding
 %% code used by the device.
